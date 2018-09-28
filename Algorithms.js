@@ -80,3 +80,39 @@ var newInv = [
 ];
 
 updateInventory(curInv, newInv);
+
+//-------------------//
+// NO REPEATS PLEASE //
+//-------------------//
+// Return the number of total permutations of the provided string that don't have repeated consecutive letters.
+// Assume that all characters in the provided string are each unique.
+
+// Coming soon
+
+//----------//
+// PAIRWISE //
+//----------//
+// find element pairs whose sum equal the second argument arg and return the sum of their indices.
+// Once an element has been used it cannot be reused to pair with another element.
+
+
+function pairwise(arr, arg) {
+  // aqui iremos guardando el resultado de sumar todos los indices de los pares que sean correctos
+  let resultado = 0;
+  // iteramos el array
+  for ( let i = 0; i < arr.length; i++ ) {
+    // hacemos otra iteracion del array por cada indice del bucle anterior    
+    for ( let j = 0; j < arr.length; j++ ) {
+      // si la suma es igual a lo esperado y no es el mismo indice (no se puede sumar el valor de un indice consigo mismo)
+      // se suma la suma de los indices al resultado y se cambia el valor por "" para que no se pueda volver a usar
+      if (arr[i] + arr[j] === arg && i !== j) {
+        resultado = resultado + i + j;        
+        arr[i] = "";
+        arr[j] = "";
+      }
+    }
+  }
+return resultado;
+}
+
+pairwise([1,4,2,3,0,5], 7);
