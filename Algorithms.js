@@ -136,7 +136,7 @@ function bubbleSort(array) {
     for (let i = 0; i < array.length - 1; i++) {        
       if (array[i] > array [i + 1]) {
         // si un elemento es mayor que el siguiente, lo guarda en biggerNumber y lo cambia por el siguiente elemento
-        let biggerNumber  = array.splice(i, 1, array[i + 1]) 
+        let biggerNumber = array.splice(i, 1, array[i + 1]) 
         // el numero mayor que hemos guardado lo ponemos en el siguiente indice            
         array[i + 1] = biggerNumber[0]
         // cuenta un cambio en el array
@@ -153,3 +153,28 @@ function bubbleSort(array) {
 
 const test = [1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]
 console.log(bubbleSort(test));
+
+//----------------//
+// SELECTION SORT //
+//----------------//
+// Selection sort works by selecting the minimum value in a list and swapping it with the first value in the list.
+// It then starts at the second position, selects the smallest value in the remaining list, and swaps it with the second element.
+// It continues iterating through the list and swapping elements until it reaches the end of the list.
+
+
+function selectionSort(array) {
+  // iteramos una vez el array
+  for (let i = 0; i < array.length; i++) {
+    // por cada indice anterior iteramos el array otra vez a partir del indice anterior
+    for (let j = i; j < array.length; j++) {
+      // si el indice i es mayor que el j los intercambiamos      
+      if (array[i] > array[j]) {        
+        let temp = array.splice(j, 1, array[i]);        
+        array[i] = temp[0];       
+      }
+    }
+  }  
+  return array;
+}
+
+console.log(selectionSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]));
