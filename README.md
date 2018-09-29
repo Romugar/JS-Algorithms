@@ -1,4 +1,4 @@
-Lista de algoritmos en JS:
+Lista de algoritmos en JS, todos realizados por mi atendiendo a la petición de enunciado, algunas soluciones estarán mejor y otras peor, pero no he usado en ningun caso recursos externos.
 
 - SYMMETRIC DIFFERENCE
 
