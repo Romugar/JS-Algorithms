@@ -116,3 +116,40 @@ return resultado;
 }
 
 pairwise([1,4,2,3,0,5], 7);
+
+//-------------//
+// BUBBLE SORT //
+//-------------//
+// The bubble sort method starts at the beginning of an unsorted array and 'bubbles up' unsorted values towards the end,
+// iterating through the array until it is completely sorted. It does this by comparing adjacent items and swapping them if they are out of order.
+// The method continues looping through the array until no swaps occur at which point the array is sorted.
+
+
+function bubbleSort(array) {
+  // variable que parara el while cuando el array este ordenado  
+  let check = true;
+  // mientras el array este desordenado seguira iterandolo  
+  while (check) {
+    // variable que  cuenta el numero de cambios en el array en cada iteracion, cuando no halla ningún cambio sera 0 y el while parara y devolvera el array ordenado
+    let changes = 0;
+    // itera el array hasta el penultimo elemento
+    for (let i = 0; i < array.length - 1; i++) {        
+      if (array[i] > array [i + 1]) {
+        // si un elemento es mayor que el siguiente, lo guarda en biggerNumber y lo cambia por el siguiente elemento
+        let biggerNumber  = array.splice(i, 1, array[i + 1]) 
+        // el numero mayor que hemos guardado lo ponemos en el siguiente indice            
+        array[i + 1] = biggerNumber[0]
+        // cuenta un cambio en el array
+        changes ++;            
+      }
+    }
+    // si no ha habido cambios en esta iteracion se corta el while y se llega al return array
+    if (changes === 0) {
+      check = false;
+    }
+  } 
+  return array;
+}
+
+const test = [1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]
+console.log(bubbleSort(test));
