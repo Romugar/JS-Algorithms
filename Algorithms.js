@@ -178,3 +178,71 @@ function selectionSort(array) {
 }
 
 console.log(selectionSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]));
+
+//----------------//
+// INSERTION SORT //
+//----------------//
+// This method works by building up a sorted array at the beginning of the list.
+// It begins the sorted array with the first element.
+// Then it inspects the next element and swaps it backwards into the sorted array until it is in sorted position.
+// It continues iterating through the list and swapping new items backwards into the sorted portion until it reaches the end.
+
+function insertionSort(array) {
+  // itera el array
+  for (let i = 0; i < array.length; i++) {
+    // ponemos el indice en una variable
+    let indice = i;
+    // mientras el elemento del indice sea menor que el elemento del indice anterior
+    while (array[indice] < array[indice - 1]) {
+      // intercambia los elemento
+      let temp = array.splice(indice, 1, array[indice - 1]);
+      array[indice - 1] = temp[0];
+      // reduce en uno el indice
+      indice --;
+    };
+  }
+  // change code above this line
+  return array;
+}
+
+console.log(insertionSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]));
+
+//------------//
+// QUICK SORT //
+//------------//
+// In this method, a pivot value is chosen in the original array.
+// The array is then partitioned into two subarrays of values less than and greater than the pivot value.
+// We then combine the result of recursively calling the quick sort algorithm on both sub-arrays.
+// This continues until the base case of an empty or single-item array is reached, which we return.
+// The unwinding of the recursive calls return us the sorted array.
+
+function quickSort(arr) {
+  // Caso base, devuelve el array tal cual y no hace mas recursion
+  if (arr.length < 2) {
+    return arr;
+  }
+  // Caso recursivo, primero divide el array en 3: subarray menores, subarray pivote y subarray mayores
+  let part = partition(arr);
+  // Devuelve la solucion de ir haciendo recursion mientras los arrays tengan mas de 2 elementos
+  return quickSort(part[0]).concat(part[1], quickSort(part[2]))
+}
+
+
+// funcion para dividir en tres el array, devuelve un array con tres arrays: menores, pivote y mayores
+function partition(array) {
+  if (array !== []) {
+    let pivot = array[0];
+    let smaller = [];
+    let larger = [];
+    for (let i = 1; i < array.length; i++) {
+      if (array[i] < pivot) {
+        smaller.push(array[i]);
+      } else {
+        larger.push(array[i]);
+      }
+    }
+    return [smaller, [pivot], larger]
+  }  
+}
+
+console.log(quickSort([20, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]))
